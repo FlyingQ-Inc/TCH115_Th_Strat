@@ -1,7 +1,7 @@
 from random import choice
 from string import ascii_uppercase
 
-import PySimpleGUI as sg
+import PySimpleGUI
 
 MAX_WRONG_GUESSES = 6
 
