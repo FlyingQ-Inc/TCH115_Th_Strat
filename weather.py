@@ -9,27 +9,18 @@ def getNotification():
     baseUrl = "http://api.openweathermap.org/data/2.5/weather?"
     
     try:
-        # Construct the API request URL
         url = baseUrl + "appid=" + 'd850f7f52bf19300a9eb4b0aa6b80f0d' + "&q=" + cityName  
         response = requests.get(url)
-        
-        # Parse the JSON response
         x = response.json()
-        
-        # Check if the city is found
         if x.get('cod') != 200:
             mb.showerror("Error", f"City '{cityName}' not found!")
             return
-        
-        # Extract weather data
         y = x["main"]
-        temp = y["temp"] - 273.15  # Convert Kelvin to Celsius
+        temp = y["temp"] - 273.15
         pres = y["pressure"]
         hum = y["humidity"]
         z = x["weather"]
         weather_desc = z[0]["description"]
-        
-        # Format the information
         info = (
             f"Here is the weather description for {cityName}:\n"
             f"Temperature = {temp:.2f}°C\n"
@@ -37,8 +28,6 @@ def getNotification():
             f"Humidity = {hum}%\n"
             f"Weather description = {weather_desc}"
         )
-        
-        # Send the notification
         notification.notify(
             title="YOUR WEATHER REPORT",
             message=info,
@@ -49,7 +38,6 @@ def getNotification():
     except Exception as e:
         mb.showerror('Error', str(e))
 
-# Set up the GUI
 wn = Tk()
 wn.title("PythonGeeks Weather Desktop Notifier")
 wn.geometry('700x200')
