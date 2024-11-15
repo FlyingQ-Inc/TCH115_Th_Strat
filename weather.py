@@ -31,7 +31,7 @@ def getNotification():
         notification.notify(
             title="YOUR WEATHER REPORT",
             message=info,
-            timeout=5
+            timeout=10
         )
         time.sleep(7)
     
@@ -39,11 +39,11 @@ def getNotification():
         mb.showerror('Error', str(e))
 
 wn = Tk()
-wn.title("PythonGeeks Weather Desktop Notifier")
+wn.title("Weather Desktop Notifier")
 wn.geometry('700x200')
 wn.config(bg='azure')
 
-Label(wn, text="PythonGeeks Weather Desktop Notifier", font=('Courier', 15), fg='grey19', bg='azure').place(x=100, y=15)
+Label(wn, text="Weather Desktop Notifier", font=('Courier', 15), fg='grey19', bg='azure').place(x=100, y=15)
 Label(wn, text='Enter the Location:', font=("Courier", 13), bg='azure').place(relx=0.05, rely=0.3)
 
 place = StringVar(wn)
